@@ -11,8 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Point app at backend
-        run: sh scripts/configure-web.sh https://javad.tail6fa24c.ts.net
 
       - uses: actions/setup-java@v4
         with:
