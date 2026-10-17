@@ -1,6 +1,6 @@
 /* Aria Edit service worker: caches the app shell only. Never caches /api/ or cross-origin. */
-const CACHE = 'aria-shell-v5';
-const SHELL = ['./', 'index.html', 'config.js', 'auth.js', 'resources.js', 'aria-extras.css', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png'];
+const CACHE = 'aria-shell-v6';
+const SHELL = ['./', 'index.html', 'config.js', 'auth.js', 'resources.js', 'diag.js', 'aria-extras.css', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== CACHE).map(x => caches.delete(x)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {

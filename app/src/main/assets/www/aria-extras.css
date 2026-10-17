@@ -28,3 +28,11 @@ body::before{filter:none!important}
 @keyframes nodeGlow{0%,100%{opacity:1}50%{opacity:.86}}
 @keyframes viewEnter{from{opacity:0;transform:translateY(12px) scale(.988)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media (pointer:coarse),(max-width:820px){*,*::before,*::after{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+
+/* ---- lag diagnostic panel (diag.js) ---- */
+.dg-panel{position:fixed;left:8px;right:8px;top:calc(8px + env(safe-area-inset-top,0px));z-index:10000;display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:14px;background:rgba(7,11,18,.96);border:1px solid rgba(255,255,255,.18);color:#e8ecf5;font-size:12px}
+.dg-head{direction:rtl}.dg-btn{padding:9px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:#101624;color:inherit;font:inherit}
+.dg-btn.off{background:#3a1520;border-color:#ff7a8a}.dg-close{margin-top:2px;border-color:#9b6bff}
+html.dbg-flat .shell{perspective:none!important;transform-style:flat!important}
+html.dbg-flat .app-header,html.dbg-flat .xp-track,html.dbg-flat .tabs,html.dbg-flat .summary-row,html.dbg-flat .card,html.dbg-flat .timer-card,html.dbg-flat .month-card,html.dbg-flat .project-card,html.dbg-flat .achievement,html.dbg-flat .avatar-panel,html.dbg-flat .stats-card{transform:none!important;transform-style:flat!important;will-change:auto!important}
+html.dbg-nofx *,html.dbg-nofx *::before,html.dbg-nofx *::after{box-shadow:none!important;text-shadow:none!important;filter:none!important}

@@ -1906,6 +1906,7 @@ function initBackgroundParticles(){
   resize(); window.addEventListener("resize",resize,{passive:true});
   let last=performance.now();
   const draw=now=>{
+    if(window.__DBG_OFF_P){last=now; raf=requestAnimationFrame(draw); return;}
     const dt=Math.min(32,now-last); last=now; ctx.clearRect(0,0,w,h);
     particles.forEach(p=>{
       p.phase+=dt*.00045; p.x+=p.vx*dt; p.y+=p.vy*dt;
@@ -2400,6 +2401,7 @@ window.addEventListener("beforeunload", save);
 </script>
 
 <script src="resources.js"></script>
+<script src="diag.js"></script>
 <script>
 if("serviceWorker" in navigator && location.protocol==="https:" && location.hostname!=="appassets.androidplatform.net"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}
 </script>
@@ -2630,6 +2632,7 @@ if("serviceWorker" in navigator && location.protocol==="https:" && location.host
 
     function animate(){
       requestAnimationFrame(animate);
+      if(window.__DBG_OFF_GL) return;
       const t=clock.getElapsedTime();
       pointerX+=(targetX-pointerX)*.035;pointerY+=(targetY-pointerY)*.035;
       targetDragY*=.998;targetDragX*=.998;dragY+=(targetDragY-dragY)*.04;dragX+=(targetDragX-dragX)*.04;
